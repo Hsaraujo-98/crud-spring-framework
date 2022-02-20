@@ -48,11 +48,11 @@ public class PessoaServiceImpl implements PessoaService {
 
     @Override
     public PessoaModel consultation(Long id) {
-        log.info("Iniciando consulta de registro, ID: {}", id);
+        log.info("Iniciando consulta de registro");
         PessoaModel model = null;
         try {
             model = pessoaRepository.findById(id).get();
-            log.info("Sucesso ao conusltar registro");
+            log.info("Sucesso ao conusltar registro: {}", model.toString());
         } catch (NoSuchElementException e) {
             log.info("Registro não encontrado");
         } catch (Exception e) {
@@ -64,11 +64,11 @@ public class PessoaServiceImpl implements PessoaService {
 
     @Override
     public PessoaModel edit(PessoaDTO dto, Long id) {
-        log.info("Iniciando atualização do registro, ID: ", id);
+        log.info("Iniciando atualização do registro");
         PessoaModel model = null;
         try {
             model = pessoaRepository.save(dto.toModel());
-            log.info("Sucesso na atualização do registro");
+            log.info("Sucesso na atualização do registro: {}", model.toString());
         } catch (Exception e) {
             log.error("Falha ao atualizar registro: {}", e.getMessage());
             throw e;
@@ -78,7 +78,7 @@ public class PessoaServiceImpl implements PessoaService {
 
     @Override
     public void delete(Long id) {
-        log.info("Iniciando remoção do registro, ID: {}", id);
+        log.info("Iniciando remoção do registro");
         try {
             pessoaRepository.deleteById(id);
             log.info("Sucesso na remoção do registro");
