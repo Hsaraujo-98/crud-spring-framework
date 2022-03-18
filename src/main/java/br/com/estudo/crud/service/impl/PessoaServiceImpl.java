@@ -67,8 +67,15 @@ public class PessoaServiceImpl implements PessoaService {
         log.info("Iniciando atualização do registro");
         PessoaModel model = null;
         try {
-            model = pessoaRepository.save(dto.toModel());
-            log.info("Sucesso na atualização do registro: {}", model.toString());
+            model = consultation(id);
+            model.setNome(dto.getNome());
+            model.setSobrenome(dto.getSobrenome());
+            model.setDataNascimento(dto.getDataNascimento());
+            model.setCpf(dto.getCpf());
+            model.setRg(dto.getRg());
+            model.setEmail(dto.getEmail());
+            model = pessoaRepository.save(model);
+            log.info("Sucesso ao atualizar registro: {}", model.toString());
         } catch (Exception e) {
             log.error("Falha ao atualizar registro: {}", e.getMessage());
             throw e;

@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 
-import java.sql.Date;
+import javax.validation.constraints.Past;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -17,7 +18,8 @@ public class PessoaDTO {
 
     private String nome;
     private String sobrenome;
-    private Date dataNascimento;
+    @Past
+    private LocalDate dataNascimento;
     private String cpf;
     private String rg;
     private String email;

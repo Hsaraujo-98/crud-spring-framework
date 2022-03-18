@@ -1,6 +1,7 @@
 package br.com.estudo.crud.model;
 
 import br.com.estudo.crud.model.dto.PessoaDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -23,7 +24,8 @@ public class PessoaModel {
     private Long id;
     private String nome;
     private String sobrenome;
-    private Date dataNascimento;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataNascimento;
     private String cpf;
     private String rg;
     private String email;
