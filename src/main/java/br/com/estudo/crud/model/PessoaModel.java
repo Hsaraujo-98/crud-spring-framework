@@ -31,9 +31,9 @@ public class PessoaModel {
     private String email;
 
     public PessoaDTO toDTO() {
-        log.info("Iniciando conversão de Model, para DTO");
+        log.trace("Iniciando conversão de Model, para DTO");
         ModelMapper mapper = new ModelMapper();
-        log.info("Finalizando conversão de Model, para DTO");
+        log.trace("Finalizando conversão de Model, para DTO");
         return mapper.map(this, PessoaDTO.class);
     }
 

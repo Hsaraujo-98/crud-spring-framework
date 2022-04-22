@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 
-import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Data
@@ -18,16 +17,16 @@ public class PessoaDTO {
 
     private String nome;
     private String sobrenome;
-    @Past
+    //@Past
     private LocalDate dataNascimento;
     private String cpf;
     private String rg;
     private String email;
 
     public PessoaModel toModel() {
-        log.info("Iniciando conversão de DTO, para Model");
+        log.trace("Iniciando conversão de DTO, para Model");
         ModelMapper mapper = new ModelMapper();
-        log.info("Finalizando conversão de DTO, para Model");
+        log.trace("Finalizando conversão de DTO, para Model");
         return mapper.map(this, PessoaModel.class);
     }
 
